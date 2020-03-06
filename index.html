@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Web APIs: Code Quiz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,32 +10,30 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
+    <!-- Link to my CSS -->
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-    <div class="content">
-        <div class="timer text-right">Time: <span id="clock">:00</span></div>
-
-        <div class="jumbotron">
-            <h1 class="text-center">coding quiz chanllenge</h1>
-            <p class="text-center">try to answer the coding code related questions whichin the time lime, keep in mind
-                that answering wrong will penalized your score times 10 seconds.</p>
-
-            <hr class="my-4">
-
-            <button id="startQuiz" class="btn btn-primary m-auto">start quiz</button>
+    <div class=" clearfix">
+        <div id="highScores" class="top-left">
+            <button id="view-highscores" type="button" class="btn float-left">View highscores</button>
         </div>
-
+        <button type="button" class="btn float-right">Score Time: <span id="timer"></span></button>
     </div>
 
-
+    <div class="start m-auto w-75 h-50 pt-5">
+        <div class="text-center">
+            <h1>Coding Quiz Challenge!</h1>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text">Try to answer the folowing code realted questions within the time limit. Keep in
+                mind <br> that incorrect answers will penalize your score time by ten seconds!</p>
+            <button type="submit" class="btn btn-secondary">Start Quiz!</button>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
-
-
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -46,10 +44,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-    <!-- Link to my styles.css -->
-    <script src=".//questions.js"></script>
-    <script src="script.js"></script>
 </body>
 
 </html>
