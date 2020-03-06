@@ -1,49 +1,135 @@
-<!doctype html>
 <html lang="en">
 
 <head>
-    <title>Web APIs: Code Quiz</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Link to my CSS -->
-    <link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web APIs: Code Quiz</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-    <div class=" clearfix">
-        <div id="highScores" class="top-left">
-            <button id="view-highscores" type="button" class="btn float-left">View highscores</button>
-        </div>
-        <button type="button" class="btn float-right">Score Time: <span id="timer"></span></button>
+  <!-- This creates my two buttons -->
+  <div class=" clearfix">
+    <div id="highScores" class="top-left">
+      <button id="view-highscores" type="button" class="btn btn-outline-dark float-left">View highscores</button>
     </div>
+    <button type="button" class="btn float-right" disabled>Score Time: <span id="timer"></span></button>
+  </div>
 
-    <div class="start m-auto w-75 h-50 pt-5">
-        <div class="text-center">
-            <h1>Coding Quiz Challenge!</h1>
-        </div>
-        <div class="card-body text-center">
-            <p class="card-text">Try to answer the folowing code realted questions within the time limit. Keep in
-                mind <br> that incorrect answers will penalize your score time by ten seconds!</p>
-            <button type="submit" class="btn btn-secondary">Start Quiz!</button>
-        </div>
+  <!-- This create the body of the quiz and the start button -->
+  <div class="start m-auto pt-5 text-center">
+    <div>
+      <h1>Coding Quiz Challenge!</h1>
+      <br>
+      <p>Try to answer the folowing code realted questions within the time limit. Keep in
+        mind <br> that incorrect answers will penalize your score time by ten seconds!</p>
+      <button type="submit" class="btn btn-success">Start Quiz!</button>
     </div>
+  </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+  <!-- scores and user init -->
+  <div class="scoreContainer m-auto w-75">
+    <div id="initialsArray">
+      <div class="card">
+        <div class="card-header">
+          All done!
+        </div>
+        <div class="card-body">
+          <p class="card-text">Your score is <span id="scoreNumber"></span>.</p>
+          <form id="initials-form" method="POST">
+            <label for="initials-text">Enter initials:</label>
+            <input type="text" placeholder="" name="initials-text" id="initials-text" />
+          </form>
+          <button id="submit-initials" value="submit" class="btn btn-secondary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- questions -->
+
+  <div class="quiz">
+    <div class="card m-auto w-75">
+      <div class="card-header">
+        <h2>Question</h2>
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote">
+          <ul></ul>
+          <footer>
+            <div class="feedback" style="padding-top:2%;"></div>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Highscores List and Local Storage -->
+
+  <div class="highScorePage mt-0">
+    <div id="highscoresList">
+      <div class="card m-auto w-75">
+        <div class="card-header">
+          <h3>Highscores</h3>
+        </div>
+        <div class="card-body">
+          <form>
+            <ol id="scoreList"></ol>
+          </form>
+          <button id="go-back" class="btn btn-secondary">Try again</button>
+          <button id="clear" class="btn btn-secondary">Clear highscores</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/questions.js" defer></script>
+  <script src="/script.js" defer></script>
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- // ***************************************************************** -->
+<!-- // PREVIOUS WORKING CODE -->
+<!-- // **************************************************************** -->
+
+<!-- <link rel="stylesheet" href="/styles.css">
+
+<script src="/questions.js" defer></script>
+<script src="/script.js" defer></script> -->
+
+<!-- This creates my two buttons -->
+<!-- <div class=" clearfix">
+    <div id="highScores" class="top-left">
+        <button id="view-highscores" type="button" class="btn float-left">View highscores</button>
+    </div>
+    <button type="button" class="btn float-right">Score Time: <span id="timer"></span></button>
+</div> -->
+
+<!-- This create the body of the quiz and the start button -->
+<!-- <div class="start m-auto w-75 h-50 pt-5">
+    <div class="text-center">
+        <h1>Coding Quiz Challenge!</h1>
+    </div>
+    <div class="card-body text-center">
+        <p class="card-text">Try to answer the folowing code realted questions within the time limit. Keep in
+            mind <br> that incorrect answers will penalize your score time by ten seconds!</p>
+        <button type="submit" class="btn btn-success">Start Quiz!</button>
+    </div>
+</div> -->

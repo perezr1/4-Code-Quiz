@@ -1,0 +1,29 @@
+html,
+body {
+  font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: larger;
+  background: url("https://walli.quosmos.com/files/thumbs/4/3/4/4347c0a1e9e62b48b3692aa0ea5707165f6c0f15/TesselationV__800_800.png");
+  background-color: white;
+}
+.quiz,
+.scoreContainer,
+.highScorePage {
+  display: none;
+}
+
+.card {
+  margin-top: 7% !important;
+  /* background: url("https://walli.quosmos.com/files/thumbs/4/3/4/4347c0a1e9e62b48b3692aa0ea5707165f6c0f15/TesselationV__800_800.png"); */
+  background-color: white;
+}
+
+li:hover {
+  background-color: lightcoral;
+  max-width: fit-content;
+  cursor: pointer;
+}
+
+.highScorePage {
+  margin-top: 0%;
+}
+
