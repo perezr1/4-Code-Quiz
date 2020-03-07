@@ -28,7 +28,7 @@ THEN I can save my initials and score
 
 The following animation demonstrates the application functionality:
 
-![code quiz](./assets/web-apis-code-quiz.gif)
+![code quiz](./Assets/web-apis-code-quiz.gif)
 
 
 
