@@ -2,7 +2,8 @@ html,
 body {
   font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
   font-size: larger;
-  background: url("https://walli.quosmos.com/files/thumbs/4/3/4/4347c0a1e9e62b48b3692aa0ea5707165f6c0f15/TesselationV__800_800.png");
+  /* background: url("https://walli.quosmos.com/files/thumbs/4/3/4/4347c0a1e9e62b48b3692aa0ea5707165f6c0f15/TesselationV__800_800.png"); */
+  background-image: url("/Assets/baby-yoda-hd-wallapers-blogenium6.jpg");
   background-color: white;
 }
 .quiz,
@@ -26,3 +27,9 @@ li:hover {
   margin-top: 0%;
 }
 
+footer{
+  font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+  color: lightgray;
+  text-align: center;
+  opacity: 0.2;
+}
