@@ -1,13 +1,13 @@
 var currentQuestion = 0;
 var initialsInput = $("#initials-text");
 var initialsArray = [];
-var secondsLeft = (questions.length) * 15;
+var secondsLeft = questions.length * 15;
 var xInterval = null;
 var newInitials = null;
 
 // Start the timer and shows the content of the quiz
 
-$(".start").click(function () {
+$(".start").click(function() {
   setTimer();
   $(".start").hide();
   $(".quiz").show();
@@ -17,7 +17,7 @@ $(".start").click(function () {
 // Timer function
 
 function setTimer() {
-  xInterval = setInterval(function () {
+  xInterval = setInterval(function() {
     $("#timer").html(secondsLeft);
     secondsLeft--;
     if (secondsLeft <= 0) {
@@ -25,7 +25,7 @@ function setTimer() {
       timeUp();
     }
   }, 1000);
-}
+};
 
 //clicking on the start quiz button fires howQuestion() function
 
@@ -37,11 +37,11 @@ function showQuestion() {
   for (var i = 0; i < parseInt(choices.length); i++) {
     var show = questions[currentQuestion].choices[i];
     $(".quiz ul").append(`<li class="button-select" id="${i}">${show}</li>`);
-  }
+  };
 
   // comparing user's guests with correct answer with on-click if/else statement. Feedback is appended and styled.
 
-  $("li").click(function () {
+  $("li").click(function() {
     var guessid = $(this).attr("id");
     var guess = questions[currentQuestion].choices[guessid];
     var answer = questions[currentQuestion].answer;
@@ -62,7 +62,6 @@ function showQuestion() {
       });
       currentQuestion++;
       showScorePage();
-
     } else {
       $(".feedback").fadeIn(200);
       $(".feedback")
@@ -76,7 +75,7 @@ function showQuestion() {
         "border-top-style": "solid"
       });
 
-       // penalizes player by 10 seconds for each wrong answer
+      // penalizes player by 10 seconds for each wrong answer
 
       secondsLeft = secondsLeft -= 10;
       currentQuestion++;
@@ -84,7 +83,6 @@ function showQuestion() {
     }
   });
 }
-
 
 function showScorePage() {
   if (currentQuestion < questions.length) {
@@ -96,7 +94,7 @@ function showScorePage() {
     $("#scoreNumber").append(secondsLeft);
     clearInterval(xInterval);
   }
-}
+};
 
 function timeUp() {
   $("#timer").text("expired!");
@@ -104,7 +102,7 @@ function timeUp() {
   $(".scoreContainer").show();
   $("#scoreNumber").append(secondsLeft);
   clearInterval(xInterval);
-}
+};
 
 // Creates the 3 local storage functions
 
@@ -123,9 +121,11 @@ function saveScores() {
   var highScores = scoreName + " : " + secondsLeft;
   initialsArray.push(highScores);
 
-  initialsArray.sort(function(a, b){return b-a}); 
+  initialsArray.sort(function(a, b) {
+    return b - a;
+  });
   localStorage.setItem("listOfItems", JSON.stringify(initialsArray));
-}
+};
 
 // 2 - second local storage
 
@@ -134,42 +134,42 @@ function loadScores() {
   var allScores = JSON.parse(savedScores);
 
   // If score were retrieved from local storage we need to update initialsArray to it
-  
+
   if (allScores != null) {
     initialsArray = allScores;
   }
-}
+};
 
 //3 - For each new result submitted we create a new line and append that to ordered list on #highScorePage
 
 function showScores() {
   for (i = 0; i < initialsArray.length; i++) {
     newInitials = $("<li></li>").append(initialsArray[i]);
-    $("#scoreList").append(newInitials);    
+    $("#scoreList").append(newInitials);
   }
-}
+};
 
 // 4 - After all 3 local storage functions run show the new div
 
 function highScoresPage() {
   $(".highScorePage").show();
   $("#initialsArray").hide();
-}
+};
 
 // Function to see and hide highScorePage div
 
-$("#view-highscores").click(function(){
+$("#view-highscores").click(function() {
   $(".highScorePage").toggle();
 });
 
 // functions for each of the "try again" and "clear highscores"
 
-$("#go-back").click(function () {
+$("#go-back").click(function() {
   window.location.reload();
 });
 
-$("#clear").click(function (e) {
+$("#clear").click(function(e) {
   e.preventDefault();
-  $("#scoreList").css('display', 'none');
+  $("#scoreList").css("display", "none");
   localStorage.clear();
 });
