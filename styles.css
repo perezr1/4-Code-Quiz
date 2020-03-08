@@ -2,9 +2,11 @@ html,
 body {
   font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
   font-size: larger;
-  background-image: url("./Assets/baby-yoda.jpg");
-
+  background: url("./Assets/baby-yoda.jpg");
+  max-width: 100%;
+  height: auto;
 }
+
 .quiz,
 .scoreContainer,
 .highScorePage {
